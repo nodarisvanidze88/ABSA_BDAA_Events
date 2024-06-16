@@ -2,7 +2,7 @@ from django.db import models
 from django.utils.timezone import now
 # Create your models here.
 class Event(models.Model):
-    ORGANIZATORS = [('ABSA', 'ABSA'), ('BDAA', 'BDAA')]
+    ORGANIZATORS = [('ABSA', 'ABSA'), ('BDAA', 'BDAA'),('ABSA/BDAA', 'ABSA/BDAA')]
     QUIZ_EXIST = [('YES', 'YES'), ('NO', 'NO')]
     
     webinar_title = models.CharField(max_length=200)
@@ -16,6 +16,9 @@ class Event(models.Model):
     youtube_link = models.URLField(blank=True, null=True)
     price_for_members = models.FloatField(blank=True, null=True)
     price_for_non_members = models.FloatField(blank=True, null=True)
+    
+    class Meta:
+        unique_together = ('webinar_title','event_start_date')
 
     def __str__(self):
         return self.webinar_title

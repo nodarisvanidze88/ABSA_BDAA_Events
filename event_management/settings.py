@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'membership',
     'events',
     'rest_framework',
+    "django_flatpickr",
 ]
 
 MIDDLEWARE = [
