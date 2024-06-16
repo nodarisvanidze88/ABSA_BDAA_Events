@@ -1,3 +1,4 @@
 from django.contrib import admin
+from .models import MembershipAssignment,MembershipType,Peoples,SubMembershipType
 
-# Register your models here.
+admin.site.register((MembershipAssignment,MembershipType,Peoples,SubMembershipType))
