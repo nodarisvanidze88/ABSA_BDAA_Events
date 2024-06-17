@@ -37,8 +37,11 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'membership',
     'events',
+    'masterEvent',
+    
     'rest_framework',
     "django_flatpickr",
 ]
