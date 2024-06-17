@@ -11,7 +11,9 @@ class MembershipType(models.Model):
 class SubMembershipType(models.Model):
     main_membership_type = models.ForeignKey(MembershipType, on_delete=models.CASCADE, related_name='sub_memberships')
     sub_membership_type = models.CharField(max_length=50)
-    
+    class Meta:
+        unique_together = ("main_membership_type","sub_membership_type")
+
     def __str__(self):
         return self.sub_membership_type
     
@@ -41,6 +43,8 @@ class Peoples(models.Model):
     default_address = models.CharField(max_length=300, blank=True)
     secondary_address = models.CharField(max_length=300, blank=True)
     optional_address = models.CharField(max_length=300, blank=True)
+    class Meta:
+        unique_together = ("first_name", "last_name","default_email")
 
     def __str__(self):
         return f"{self.first_name} {self.last_name}"
