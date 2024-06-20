@@ -1,11 +1,11 @@
 import environ
 import os
-from decouple import config
+# from decouple import config
 from pathlib import Path
 
 # env = environ.Env()
 # environ.Env.read_env()
-MEMBERSHIP_SPREADSHEET_URL = config('MEMBERSHIP_SPREADSHEET_URL')
+# MEMBERSHIP_SPREADSHEET_URL = config('MEMBERSHIP_SPREADSHEET_URL')
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 

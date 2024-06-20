@@ -59,6 +59,13 @@ class MembershipAssignment(models.Model):
     acceptance = models.DateField(default=now, blank=True)
     paid_till = models.DateField(default=default_paid_till, blank=True)
 
+    @property
+    def status(self):
+        today = now().date()
+        if self.paid_till < today or not (self.acceptance <= today <= self.paid_till):
+            return 'Inactive'
+        return 'Active'
+
     def __str__(self):
         return f"{self.member.first_name} {self.member.last_name}"
 

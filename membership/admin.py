@@ -18,7 +18,20 @@ class PeoplesAdmin(admin.ModelAdmin):
     list_per_page = 20
 
 
+class MembershipAssignmentAdmin(admin.ModelAdmin):
+    list_display = ('member', 'membership_type_list', 'sub_membership_type', 'acceptance', 'paid_till', 'status')
 
-admin.site.register(SubMembershipType,SubMemberTypeAdmin)
-admin.site.register(Peoples,PeoplesAdmin)
-admin.site.register((MembershipAssignment,MembershipType))
+    def membership_type_list(self, obj):
+        return ", ".join([m.membership_type for m in obj.membership_type.all()])
+    membership_type_list.short_description = 'Membership Type'
+
+    def status(self, obj):
+        return obj.status
+    status.short_description = 'Status'
+    search_fields = ["member"]
+
+admin.site.register(MembershipAssignment, MembershipAssignmentAdmin)
+
+admin.site.register(SubMembershipType, SubMemberTypeAdmin)
+admin.site.register(Peoples, PeoplesAdmin)
+admin.site.register(MembershipType)
