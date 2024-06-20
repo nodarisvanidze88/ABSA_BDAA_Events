@@ -2,7 +2,8 @@ import environ
 import os
 # from decouple import config
 from pathlib import Path
-
+from dotenv import load_dotenv
+load_dotenv()
 # env = environ.Env()
 # environ.Env.read_env()
 # MEMBERSHIP_SPREADSHEET_URL = config('MEMBERSHIP_SPREADSHEET_URL')
@@ -38,6 +39,7 @@ INSTALLED_APPS = [
     
     'rest_framework',
     "django_flatpickr",
+    'storages',
 ]
 
 MIDDLEWARE = [
@@ -74,14 +76,23 @@ WSGI_APPLICATION = 'event_management.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': BASE_DIR / 'db.sqlite3',
+#     }
+# }
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('DB_USER'),
+        'PASSWORD': os.getenv('DB_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT'),
     }
 }
-
-
 # Password validation
 # https://docs.djangoproject.com/en/5.0/ref/settings/#auth-password-validators
 
@@ -122,3 +133,18 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+AWS_ACCESS_KEY_ID = os.getenv('ACCESS_KEY')
+AWS_SECRET_ACCESS_KEY = os.getenv('SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = os.getenv('BOTO_NAME')
+AWS_S3_ENDPOINT_URL = os.getenv('BOTO_ENDPOINT')
+AWS_S3_OBJECT_PARAMETERS = {
+    'CacheControl': 'max-age=86400',
+}
+AWS_LOCATION = 'static'
+
+STATIC_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL}/{AWS_LOCATION}/'
+MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL}/media/'

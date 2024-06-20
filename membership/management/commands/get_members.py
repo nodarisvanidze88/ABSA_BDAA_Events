@@ -13,7 +13,7 @@ class Command(BaseCommand):
         data = requests.get(url)
         data_text = StringIO(data.text)
         csvData = csv.DictReader(data_text)
-        Peoples.objects.all().delete()
+        # Peoples.objects.all().delete()
         for item in csvData:
             dob_str = item['DOB']
             try:
