@@ -7,10 +7,12 @@ class SubMemberTypeAdmin(admin.ModelAdmin):
     search_fields = ["main_membership_type", "sub_membership_type"]
 
 class PeoplesAdmin(admin.ModelAdmin):
+    list_filter = ["gender","default_chapter","default_state"]
+    list_display = ["title", "first_name", "last_name", "gender", "date_of_birth","default_email","default_chapter",
+                    "default_state", "business_name", "phone_mobile", "default_address"]
     def __init__(self, model, admin_site):
         super().__init__(model, admin_site)
-        self.list_display = self.get_all_field_names(model)
-        self.list_filter = ["gender","default_chapter","default_state"]
+        
         self.search_fields = self.get_all_field_names(model)
 
     def get_all_field_names(self, model):
