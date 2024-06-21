@@ -10,7 +10,7 @@ class PeoplesAdmin(admin.ModelAdmin):
     def __init__(self, model, admin_site):
         super().__init__(model, admin_site)
         self.list_display = self.get_all_field_names(model)
-        self.list_filter = self.get_all_field_names(model)
+        self.list_filter = ["gender","default_chapter","default_state"]
         self.search_fields = self.get_all_field_names(model)
 
     def get_all_field_names(self, model):
