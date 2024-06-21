@@ -4,10 +4,7 @@ import os
 from pathlib import Path
 from dotenv import load_dotenv
 load_dotenv()
-# env = environ.Env()
-# environ.Env.read_env()
-# MEMBERSHIP_SPREADSHEET_URL = config('MEMBERSHIP_SPREADSHEET_URL')
-# Build paths inside the project like this: BASE_DIR / 'subdir'.
+
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
@@ -133,8 +130,8 @@ USE_TZ = True
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_ACCESS_KEY_ID = os.getenv('ACCESS_KEY')
 AWS_SECRET_ACCESS_KEY = os.getenv('SECRET_ACCESS_KEY')
@@ -145,12 +142,11 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = 'static'
 
-STATIC_URL = f'https://{os.getenv("BOTO_NAME")}.{os.getenv("BOTO_ENDPOINT")}/{os.getenv("AWS_LOCATION")}/'
-MEDIA_URL = f'https://{AWS_STORAGE_BUCKET_NAME}.{AWS_S3_ENDPOINT_URL}/media/'
+
 
 # STATIC_URL = '/static/'
 # MEDIA_URL = '/media/'
-
+STATIC_URL = '/static/'
 STATICFILES_DIRS = [
     BASE_DIR / 'static'
  ]
