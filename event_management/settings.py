@@ -121,17 +121,7 @@ USE_I18N = True
 USE_TZ = True
 
 
-# Static files (CSS, JavaScript, Images)
-# https://docs.djangoproject.com/en/5.0/howto/static-files/
-
-
-# Default primary key field type
-# https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
-
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-
-# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
-# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 AWS_ACCESS_KEY_ID = os.getenv('ACCESS_KEY')
 AWS_SECRET_ACCESS_KEY = os.getenv('SECRET_ACCESS_KEY')
@@ -142,14 +132,7 @@ AWS_S3_OBJECT_PARAMETERS = {
 }
 AWS_LOCATION = 'static'
 
-
-
-# STATIC_URL = '/static/'
-# MEDIA_URL = '/media/'
 STATIC_URL = '/static/'
-# STATICFILES_DIRS = [
-#     BASE_DIR / 'static'
-#  ]
 
 MEDIA_ROOT = BASE_DIR / 'static/media'
 STATIC_ROOT = BASE_DIR / 'static'

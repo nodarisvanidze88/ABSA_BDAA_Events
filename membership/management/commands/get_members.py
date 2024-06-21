@@ -6,6 +6,7 @@ from datetime import datetime
 from membership.models import Peoples
 from dotenv import load_dotenv
 from django.core.management.base import BaseCommand
+from termcolor import colored
 load_dotenv()
 class Command(BaseCommand):
     def handle(self,*args, **kwargs):
