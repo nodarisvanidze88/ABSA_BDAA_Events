@@ -4,6 +4,7 @@ from django.utils.timezone import now
 class Event(models.Model):
     ORGANIZATORS = [('ABSA', 'ABSA'), ('BDAA', 'BDAA'),('ABSA/BDAA', 'ABSA/BDAA')]
     QUIZ_EXIST = [('YES', 'YES'), ('NO', 'NO')]
+    STATUS_CHOICES = [('live', 'Live'), ('online', 'Online'), ('canceled', 'Canceled')]
     
     webinar_title = models.CharField(max_length=200)
     event_start_date = models.DateField(default=now)
@@ -15,6 +16,7 @@ class Event(models.Model):
     youtube_link = models.URLField(blank=True, null=True)
     price_for_members = models.FloatField(blank=True, null=True)
     price_for_non_members = models.FloatField(blank=True, null=True)
+    status = models.CharField(max_length=10, choices=STATUS_CHOICES, default='live')
     
     class Meta:
         unique_together = ('webinar_title','event_start_date')
