@@ -30,7 +30,7 @@ class MembershipAssignmentAdmin(admin.ModelAdmin):
     def status(self, obj):
         return obj.status
     status.short_description = 'Status'
-    search_fields = ["membership_ID","membership_type","sub_membership_type","member","status"]
+    search_fields = ['membership_ID', 'membership_type__membership_type', 'sub_membership_type__sub_membership_type', 'member__first_name', 'member__last_name', 'member__default_email']
 
 admin.site.register(MembershipAssignment, MembershipAssignmentAdmin)
 
