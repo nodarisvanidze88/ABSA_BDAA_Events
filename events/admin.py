@@ -30,10 +30,10 @@ class EventAdmin(admin.ModelAdmin):
     formatted_youtube_link.short_description = 'YouTube Link'
     formatted_event_start_time.short_description = 'Event Start Time'
     list_display = ("webinar_title", "event_start_date", "event_end_date","formatted_event_start_time",
-    "event_duration_time", "event_organisator", "quiz", "formatted_youtube_link", "price_for_members", "price_for_non_members")
+    "event_duration_time", "event_organisator", "quiz", "formatted_youtube_link","status", "price_for_members", "price_for_non_members")
     list_filter = ("webinar_title", "event_start_date", "event_end_date","event_start_time",
-    "event_duration_time", "event_organisator", "quiz", "youtube_link", "price_for_members", "price_for_non_members")
-    search_fields = ("webinar_title", "event_start_date", "event_end_date","event_start_time",
+    "event_duration_time", "event_organisator", "quiz", "youtube_link", "status","price_for_members", "price_for_non_members")
+    search_fields = ("webinar_title", "event_start_date", "event_end_date","status","event_start_time",
     "event_duration_time", "event_organisator", "quiz", "youtube_link", "price_for_members", "price_for_non_members")
     list_per_page = 10
 
