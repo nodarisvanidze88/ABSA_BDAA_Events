@@ -1,6 +1,6 @@
 from django.db import models
 from django.utils.timezone import now
-# Create your models here.
+
 class Event(models.Model):
     ORGANIZATORS = [('ABSA', 'ABSA'), ('BDAA', 'BDAA'),('ABSA/BDAA', 'ABSA/BDAA')]
     QUIZ_EXIST = [('YES', 'YES'), ('NO', 'NO')]
@@ -12,7 +12,6 @@ class Event(models.Model):
     event_duration_time = models.PositiveIntegerField(blank=True, null=True)
     event_organisator = models.CharField(max_length=10, choices=ORGANIZATORS)
     quiz = models.CharField(max_length=3, choices=QUIZ_EXIST, default='NO')
-    quiz_URL = models.URLField(blank=True, null=True)
     youtube_link = models.URLField(blank=True, null=True)
     price_for_members = models.FloatField(blank=True, null=True)
     price_for_non_members = models.FloatField(blank=True, null=True)
@@ -23,4 +22,13 @@ class Event(models.Model):
     def __str__(self):
         return self.webinar_title
 
-    
+class Quizes(models.Model):
+    quizTitle = models.CharField(max_length=200)
+    quiz_URL = models.URLField()
+    event = models.ForeignKey(Event, on_delete=models.CASCADE, related_name='quizzes') 
+
+    class Meta:
+        unique_together = ('quizTitle','quiz_URL') 
+
+    def __str__(self):
+        return self.quizTitle 
