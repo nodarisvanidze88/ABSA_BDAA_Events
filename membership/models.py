@@ -53,6 +53,7 @@ def default_paid_till():
     return now() + datetime.timedelta(days=365)
 
 class MembershipAssignment(models.Model):
+    membership_ID = models.CharField(max_length=20, blank=True, null=True)
     membership_type = models.ManyToManyField(MembershipType, related_name='assignments')
     sub_membership_type = models.ForeignKey(SubMembershipType, on_delete=models.CASCADE, blank=True)
     member = models.ForeignKey(Peoples, on_delete=models.CASCADE, related_name='assignments')
