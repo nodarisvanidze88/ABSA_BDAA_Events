@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'membership',
     'events',
     'masterEvent',
+    'peoples',
     
     'rest_framework',
     "django_flatpickr",
