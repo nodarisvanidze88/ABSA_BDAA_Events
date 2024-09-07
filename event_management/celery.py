@@ -9,6 +9,6 @@ app.autodiscover_tasks()
 app.conf.beat_schedule = {
     'update-status-every-day': {
         'task': 'membership.tasks.update_membership_status',
-        'schedule': crontab(minute='*/5'),
+        'schedule': crontab(hour=0, minute=0),
     },
 }
