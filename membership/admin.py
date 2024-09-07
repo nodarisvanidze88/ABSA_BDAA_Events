@@ -12,7 +12,7 @@ class SubMemberTypeAdmin(admin.ModelAdmin):
 
 class MembershipAssignmentAdmin(admin.ModelAdmin):
     list_display = ('member', 'membership_type_list', 'sub_membership_type', 'acceptance', 'paid_till', 'status')
-    list_filter = ('membership_type_list','sub_membership_type')
+    list_filter = ('membership_type','sub_membership_type')
     def membership_type_list(self, obj):
         return ", ".join([m.membership_type for m in obj.membership_type.all()])
     membership_type_list.short_description = 'Membership Type'
