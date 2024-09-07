@@ -3,7 +3,8 @@ import csv
 import os
 from io import StringIO
 from datetime import datetime
-from membership.models import MembershipAssignment, Peoples, SubMembershipType, MembershipType
+from membership.models import MembershipAssignment, SubMembershipType, MembershipType
+from peoples.models import Peoples
 from dotenv import load_dotenv
 from django.core.management.base import BaseCommand
 from termcolor import colored
@@ -14,7 +15,7 @@ class Command(BaseCommand):
         return datetime.strptime(data, "%d.%m.%Y").date() if data else None
     
     def handle(self, *args, **kwargs):
-        url = os.getenv('BDAA_MEMBERSHIP_URL')
+        url = os.getenv('ABSA_MEMBERSHIP_URL')
         data = requests.get(url)
         data_text = StringIO(data.text)
         csvData = csv.DictReader(data_text)
