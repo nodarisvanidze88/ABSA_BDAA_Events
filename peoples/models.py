@@ -24,6 +24,7 @@ class Peoples(models.Model):
     phone_work = models.CharField(max_length=100, blank=True)
     phone_mobile = models.CharField(max_length=100, blank=True)
     phone_fax = models.CharField(max_length=100, blank=True)
+    phost_code = models.CharField(max_length=10, blank=True)
     default_address = models.CharField(max_length=300, blank=True)
     secondary_address = models.CharField(max_length=300, blank=True)
     optional_address = models.CharField(max_length=300, blank=True)
