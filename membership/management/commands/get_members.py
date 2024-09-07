@@ -3,7 +3,7 @@ import csv
 import os
 from io import StringIO
 from datetime import datetime
-from membership.models import Peoples
+from peoples.models import Peoples
 from dotenv import load_dotenv
 from django.core.management.base import BaseCommand
 from termcolor import colored
