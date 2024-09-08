@@ -1,6 +1,5 @@
 from django.db import models
 from django.utils.timezone import now
-
 class Event(models.Model):
     ORGANIZATORS = [('ABSA', 'ABSA'), ('BDAA', 'BDAA'),('ABSA/BDAA', 'ABSA/BDAA')]
     QUIZ_EXIST = [('YES', 'YES'), ('NO', 'NO')]
